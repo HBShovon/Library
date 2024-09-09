@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  display: none;
+}
+
+.displayDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.displayDiv div {
+  height: 100px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: bisque;
+  border: 1px solid grey;
+}
