@@ -4,11 +4,17 @@ const newBookForm = document.querySelector("form");
 
 const myLibrary = [];
 
-function Book(title, author, pages, readStatus) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readStatus = readStatus;
+class Book {
+  constructor(title, author, pages, readStatus) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readStatus = readStatus;
+  }
+
+  toggleReadStatus() {
+    this.readStatus = this.readStatus === "read" ? "not read" : "read";
+  }
 }
 
 function displayBooks() {
@@ -44,10 +50,6 @@ function renderBook(book, index) {
   displayDiv.appendChild(bookDiv);
 }
 
-Book.prototype.toggleReadStatus = function () {
-  this.readStatus = this.readStatus === "read" ? "not read" : "read";
-};
-
 newBookBtn.addEventListener("click", () => {
   newBookForm.style.display = "block";
 });
@@ -62,7 +64,7 @@ newBookForm.addEventListener("submit", (e) => {
   let pages = e.target.pages.value;
   let readStatus = e.target.readStatus.value;
 
-  let book = new Book(`${title}`, `${author}`, `${pages}`, `${readStatus}`);
+  let book = new Book(title, author, pages, readStatus);
 
   myLibrary.push(book);
 
